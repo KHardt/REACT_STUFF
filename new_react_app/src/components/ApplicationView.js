@@ -8,41 +8,75 @@ import "./ApplicationView.css"
 
 
 class ApplicationViews extends Component {
-    employeesFromAPI = [
-        { id: 1, name: "Jessica Younker" },
-        { id: 2, name: "Jordan Nelson" },
-        { id: 3, name: "Zoe LeBlanc" },
-        { id: 4, name: "Blaise Roberts" }
-    ]
-
-    locationsFromAPI = [
-        { id: 1, name: "Nashville North", address: "500 Circle Way" },
-        { id: 2, name: "Nashville South", address: "10101 Binary Court" }
-    ]
-
-    animalsFromAPI = [
-        { id: 1, name: "Doodles" },
-        { id: 2, name: "Jack" },
-        { id: 3, name: "Angus" },
-        { id: 4, name: "Henley" },
-        { id: 5, name: "Derkins" },
-        { id: 6, name: "Checkers" }
-    ]
-
-    ownersFromAPI = [
-        { id: 1, name: "Ryan Tanay" },
-        { id: 2, name: "Emma Beaton" },
-        { id: 3, name: "Dani Adkins" },
-        {id:4, name: "Ricky Bruno"}
-
-    ]
+    
 
     state = {
-        employees: this.employeesFromAPI,
-        locations: this.locationsFromAPI,
-        animals: this.animalsFromAPI,
-        owners: this.ownersFromAPI
+        // data: {
+            locations: [],
+            animals: [],
+            employees: [],
+            owners: []
+        // }
     }
+
+
+    componentDidMount() {
+        const newState = {}
+
+           
+        fetch("http://localhost:5002/animals")
+        .then(r => r.json())
+        .then(animals => newState.animals = animals)
+        fetch("http://localhost:5002/locations")
+        .then(r => r.json())
+        .then(locations => newState.locations = locations)
+        fetch("http://localhost:5002/owners")
+        .then(r => r.json())
+        .then(owners => newState.owners = owners)
+        .then(() => fetch("http://localhost:5002/employees")
+        .then(r => r.json()))
+        .then(employees => newState.employees = employees)
+        .then(() => this.setState(newState))
+
+    }
+
+    deleteAnimal = id => {
+        fetch(`http://localhost:5002/animals/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/animals`))
+        .then(e => e.json())
+        .then(animals => this.setState({
+            animals: animals
+        }))
+    }
+
+
+    deleteEmployee = id => {
+        fetch(`http://localhost:5002/employees/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/employees`))
+        .then(e => e.json())
+        .then(employees => this.setState({
+            employees: employees
+        }))
+    }
+
+    deleteOwner = id => {
+        fetch(`http://localhost:5002/owners/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/owners`))
+        .then(e => e.json())
+        .then(owners => this.setState({
+            owners: owners
+        }))
+    }
+
 
     render() {
         return (
@@ -51,15 +85,16 @@ class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route exact path="/animals" render={(props) => {
-                    return <AnimalList animals={this.state.animals} />
-                }} />
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList employees={this.state.employees} />
+                return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                 }} />
                 <Route exact path="/owners" render={(props) => {
-                    return <OwnerList owners={this.state.owners} />
+                return <OwnerList deleteOwner={this.deleteOwner} owners={this.state.owners} />
                 }} />
+                <Route exact path="/animals" render={(props) => {
+                return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                }} />
+        
                 </div>
             </React.Fragment>
         )

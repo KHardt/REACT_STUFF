@@ -16,7 +16,7 @@ class App extends Component {
         
           
         </header>
-        <h2> {comment}</h2>
+        {/*<h2> {comment}</h2>*/}
         
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.

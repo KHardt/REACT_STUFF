@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import './location.css';
 
 
-class EmployeeList extends Component {
+class LocationList extends Component {
     render() {
         return (
-            <section className="employees">
+            <section className="locations">
             {
-                this.props.locations.map(location =>
-                    <div key={location.id}>
-                        {`${location.name} ${location.address}`}
+                this.props.locations.map(locations =>
+                    <div key={locations.id}>
+                        {`${locations.name} ${locations.address}`}
+
                     </div>
                 )
             }
@@ -18,7 +19,7 @@ class EmployeeList extends Component {
     }
 }
 
-export default EmployeeList
+export default LocationList
 
 
 

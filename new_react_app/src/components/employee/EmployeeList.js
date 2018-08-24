@@ -1,13 +1,44 @@
 import React, { Component } from 'react'
 
+export default class EmployeeList extends Component {
+    render () {
+        return (
+            <section className="employees">
+            {
+                this.props.employees.map(employees =>
+                    <div key={employees.id} className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">
+                                {employees.name}
+                                <a href="#"
+                                    onClick={() => this.props.deleteEmployee(employees.id)}
+                                    className="card-link">Delete</a>
+                            </h5>
+                        </div>
+                    </div>
+                )
+            }
+            </section>
+        )
+    }
+}
+
+
+
+
+
+
+/*
+import React, { Component } from 'react'
+
 class EmployeeList extends Component {
     render() {
         return (
             <section className="employees">
             {
-                this.props.employees.map(employee =>
-                    <div key={employee.id}>
-                        {employee.name}
+                this.props.employees.map(employees =>
+                    <div key={employees.id}>
+                        {employees.name}
                     </div>
                 )
             }
@@ -20,17 +51,6 @@ export default EmployeeList
 
 
 
-
-
-
-
-
-
-
-
-
-
-/*
 export default class EmployeeList  extends Component {
     render() {
         return (
