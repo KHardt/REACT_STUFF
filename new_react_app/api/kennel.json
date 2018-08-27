@@ -1,10 +1,6 @@
 {
   "employees": [
     {
-      "id": 2,
-      "name": "Jordan Nelson"
-    },
-    {
       "id": 3,
       "name": "Zoe LeBlanc"
     },
@@ -26,14 +22,6 @@
     }
   ],
   "animals": [
-    {
-      "id": 4,
-      "name": "Henley"
-    },
-    {
-      "id": 5,
-      "name": "Derkins"
-    },
     {
       "id": 6,
       "name": "Checkers"
