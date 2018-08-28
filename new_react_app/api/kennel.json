@@ -1,12 +1,12 @@
 {
   "employees": [
     {
-      "id": 3,
-      "name": "Zoe LeBlanc"
+      "id": 1,
+      "name": "Ricky Bruno"
     },
     {
-      "id": 4,
-      "name": "Blaise Roberts"
+      "name": "Nick Black",
+      "id": 2
     }
   ],
   "locations": [
@@ -23,12 +23,23 @@
   ],
   "animals": [
     {
-      "id": 6,
-      "name": "Checkers"
+      "id": 2,
+      "name": "Scoobs",
+      "breed": "Possum",
+      "employeeID": 1,
+      "image": ".DogIcon.png"
     },
     {
-      "id": 2,
-      "name": "Scoobs"
+      "id": 3,
+      "name": "BooBoo",
+      "breed": "Cats",
+      "image": "https://upload.wikimedia.org/wikipedia/en/d/df/Sam_dog.jpg"
+    },
+    {
+      "name": "Joe",
+      "breed": "Human",
+      "employeeId": 1,
+      "id": 4
     }
   ],
   "owners": [
@@ -38,8 +49,11 @@
     },
     {
       "id": 2,
-      "name": "Nick Black"
+      "name": "Klaus Hardt"
+    },
+    {
+      "name": "Dammit Janet",
+      "id": 3
     }
-
   ]
 }

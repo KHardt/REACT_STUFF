@@ -1,8 +1,19 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 
 export default class EmployeeList extends Component {
     render () {
         return (
+
+            <React.Fragment>
+            <div className="employeeButton">
+            <button type="button"
+                    className="btn btn-success"
+                    onClick={() => {
+                        console.log(this.props)//will show history if works
+                        this.props.history.push("/employees/new")}//history will be set at Route {...props} to bring all
+                    }>Add Employee</button>
+        </div>
             <section className="employees">
             {
                 this.props.employees.map(employees =>
@@ -10,6 +21,7 @@ export default class EmployeeList extends Component {
                         <div className="card-body">
                             <h5 className="card-title">
                                 {employees.name}
+                                <Link className="nav-link" to={`/employees/${employees.id}`}>Details</Link>
                                 <a href="#"
                                     onClick={() => this.props.deleteEmployee(employees.id)}
                                     className="card-link">Delete</a>
@@ -19,6 +31,8 @@ export default class EmployeeList extends Component {
                 )
             }
             </section>
+
+            </React.Fragment>
         )
     }
 }
