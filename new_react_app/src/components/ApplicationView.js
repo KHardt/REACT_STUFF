@@ -10,6 +10,7 @@ import EmployeeDetail from './employee/EmployeeDetail'
 import OwnerDetail from './owners/OwnersDetail'
 import AnimalForm from './animals/AnimalForm'
 import OwnerForm from './owners/OwnerForm'
+import AnimalEdit from './animals/AnimalEdit'
 import "./ApplicationView.css"
 import EmployeeForm from './employee/EmployeeForm';
 
@@ -123,6 +124,14 @@ class ApplicationViews extends Component {
     owners: owners
     }))
 
+    
+    editAnimal = (id, newEntry) => APIManager.patch(id, "animals", newEntry)
+    //i need the entry first- and only do patch after the edits are done
+    .then(() => APIManager.getAll("animals"))
+    .then(animals => this.setState({
+    animals: animals
+    }))
+
 
 
    
@@ -145,6 +154,15 @@ class ApplicationViews extends Component {
                     <Route path="/animals/:animalId(\d+)" render={(props) => {
                     return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                     }} />
+
+                    <Route path="/animals/edit/:animalId(\d+)" render={(props) => {
+                    return <AnimalEdit {...props} 
+                    editAnimal={this.editAnimal} 
+                    animals={this.state.animals} 
+                    employees={this.state.employees}/>
+                    }} /> 
+
+                
                     <Route path="/employees/:employeeId(\d+)" render={(props) => {
                     return <EmployeeDetail {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                     }} />
@@ -221,3 +239,4 @@ export default ApplicationViews
             }))
     }
 */
+

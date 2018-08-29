@@ -8,6 +8,12 @@ export default Object.create(null, {
         }
     },
 
+    getSingleEntry: {
+        value: function (id) {
+            return fetch(`${remoteURL}/${id}`).then(r => r.json())
+        }
+    },
+
     delete: {
         value: function (resource, id) {
             //console.log(`${remoteURL}/animals/${id}`)
@@ -34,6 +40,18 @@ export default Object.create(null, {
         }
     },
     
+    patch: {
+        value: function (id, resource, newEntry) {
+            return fetch(`${remoteURL}/${resource}/${id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newEntry)
+            }).then(r => r.json())
+        }
+    }
+
 
 
 
