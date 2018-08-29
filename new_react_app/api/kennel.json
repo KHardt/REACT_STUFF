@@ -25,13 +25,15 @@
     {
       "id": 3,
       "name": "BooBoo",
-      "breed": "Cat",
-      "image": "https://upload.wikimedia.org/wikipedia/en/d/df/Sam_dog.jpg"
+      "breed": "Dog?",
+      "image": "https://upload.wikimedia.org/wikipedia/en/d/df/Sam_dog.jpg",
+      "employeeID": "Ricky Bruno"
     },
     {
       "name": "Joe",
       "breed": "Human",
       "employeeId": 3,
+      "image": "./unnamed.jpg",
       "id": 4
     }
   ],
