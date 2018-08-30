@@ -29,32 +29,26 @@
     {
       "id": 3,
       "name": "Joe",
-      "breed": "Dog?",
+      "breed": "Dog",
       "image": "https://upload.wikimedia.org/wikipedia/en/d/df/Sam_dog.jpg",
-      "employeeID": "Ricky Bruno"
-    },
-    {
-      "id": 4,
-      "name": "John",
-      "breed": "Possum",
-      "image": "https://evilsquirrelsnest.files.wordpress.com/2013/12/lil-possum.jpg?w=640",
-      "employeeId": 3,
-      "employeeID": "Klaus Hardt"
+      "employeeId": 3
     },
     {
       "name": "Steve",
       "breed": "Human-dog?",
       "employeeId": 4,
       "image": "https://i.dailymail.co.uk/i/pix/2015/07/03/01/2A2F81EA00000578-0-image-a-11_1435885016556.jpg",
-      "id": 5,
-      "employeeID": "Ricky Bruno"
+      "id": 5
+    },
+    {
+      "name": "John",
+      "breed": "Possum",
+      "image": "https://evilsquirrelsnest.files.wordpress.com/2013/12/lil-possum.jpg?w=640",
+      "employeeId": 5,
+      "id": 6
     }
   ],
   "owners": [
-    {
-      "id": 1,
-      "name": "Ryan Tanay"
-    },
     {
       "id": 2,
       "name": "Klaus Hardt"

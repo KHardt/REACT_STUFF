@@ -8,7 +8,7 @@ export default class AnimalEdit extends Component {
     state = {
         name: "",
         breed: "",
-        employeeID: ""
+        employeeId: ""
     }
 
     //Update state whenever an input field is edited
@@ -33,11 +33,12 @@ handleFieldChange = (whichOne, evt) => {
      */
     editOldAnimal = evt => {
         evt.preventDefault()
-        let employeeID = this.state.employeeID
+        //let employeeId = this.state.employeeId
+        const conditionEmployee = typeof this.state.employeeId === 'number'
             const animal = {
                 name: this.state.name,
                 breed: this.state.breed,
-                employeeID: employeeID
+                employeeId: conditionEmployee ? this.state.employeeId : this.props.employees.find(e => e.name === this.state.employeeId).id,
             }
 
             // Create the animal and redirect user to animal list
@@ -49,7 +50,7 @@ handleFieldChange = (whichOne, evt) => {
             this.setState({
                 name: animal.name,
                 breed: animal.breed,
-                employeeID: animal.employeeID
+                employeeId: animal.employeeId
             })
         }
     
@@ -78,11 +79,11 @@ handleFieldChange = (whichOne, evt) => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="employee">Assign to caretaker</label>
-                        <select defaultValue={this.state.employeeID}name="employee" id="employeeID"
+                        <select defaultValue={this.state.employeeId}name="employee" id="employeeId"
                                 onChange={this.handleFieldChange}>
                             <option value="">Select an employee</option>
                         {
-                            this.props.employees.map(e => <option key={e.ID} ID="employeeID">{e.name}</option>)
+                            this.props.employees.map(e => <option key={e.id} id="employeeId">{e.name}</option>)
                         }
                         </select>
                     </div>

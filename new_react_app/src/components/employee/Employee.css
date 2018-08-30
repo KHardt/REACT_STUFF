@@ -3,3 +3,14 @@
     justify-content: space-evenly;
     margin: 0 0 10px 0;
 }
+
+.icon--employee {
+    width: 75px;
+    height: 75px;
+
+}
+
+.employees {
+    display: flex;
+    justify-content: space-evenly;
+}
