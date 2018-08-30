@@ -41,8 +41,9 @@
       "id": 5
     },
     {
-      "name": "dfs",
-      "breed": "sdf",
+      "name": "John",
+      "breed": "Possum",
+      "image": "https://evilsquirrelsnest.files.wordpress.com/2013/12/lil-possum.jpg?w=640",
       "employeeId": 5,
       "id": 6
     }

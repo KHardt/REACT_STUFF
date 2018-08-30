@@ -33,7 +33,7 @@ handleFieldChange = (whichOne, evt) => {
      */
     editOldAnimal = evt => {
         evt.preventDefault()
-        let employeeId = this.state.employeeId
+        //let employeeId = this.state.employeeId
         const conditionEmployee = typeof this.state.employeeId === 'number'
             const animal = {
                 name: this.state.name,
