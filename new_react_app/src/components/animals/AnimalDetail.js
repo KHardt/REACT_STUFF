@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import "./Animal.css"
-//import animal from "unnamed.jpg"
 
 
 export default class AnimalDetail extends Component {
@@ -27,8 +26,7 @@ export default class AnimalDetail extends Component {
                                             .then(() => this.props.history.push("/animals"))}
                             className="card-link">Delete</a>
                             <a href="#" //don't want to call function here!
-                            onClick={() =>
-                                            this.props.history.push(`/animals/edit/${animal.id}`)}
+                            onClick={() => this.props.history.push(`/animals/edit/${animal.id}`)}
                             className="card-link">Edit</a>
                     </div>
                 </div>

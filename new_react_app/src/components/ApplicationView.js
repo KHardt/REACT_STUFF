@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import React, { Component } from "react"
 import AnimalList from './animals/AnimalList'
 import LocationList from './LocationList/locationNorth'
@@ -11,6 +11,7 @@ import OwnerDetail from './owners/OwnersDetail'
 import AnimalForm from './animals/AnimalForm'
 import OwnerForm from './owners/OwnerForm'
 import AnimalEdit from './animals/AnimalEdit'
+import Login from './Login'
 import "./ApplicationView.css"
 import EmployeeForm from './employee/EmployeeForm';
 
@@ -26,6 +27,10 @@ class ApplicationViews extends Component {
             owners: []
             // }
     }
+
+    isAuthenticated = () => localStorage.getItem("credentials") !== null
+
+
 
 
     componentDidMount() {
@@ -142,8 +147,13 @@ class ApplicationViews extends Component {
                     <Route exact path="/" render={(props) => {
                         return <LocationList locations={this.state.locations} />
                     }} />
-                    <Route exact path="/employees" render={(props) => {
-                        return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    <Route exact path="/employees" render={props => {
+                    if (this.isAuthenticated()) {
+                    return <EmployeeList deleteEmployee={this.deleteEmployee}
+                             employees={this.state.employees} />
+                     } else {
+                    return <Redirect to="/login" />
+                        }
                     }} />
                     <Route exact path="/owners" render={(props) => {
                         return <OwnerList {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
@@ -187,6 +197,7 @@ class ApplicationViews extends Component {
                     addOwner={this.addOwner}
                     owners={this.state.owners} />
                     }} />
+                    <Route path="/login" component={Login} />
 
                 </div>
             </React.Fragment>
@@ -238,5 +249,9 @@ export default ApplicationViews
                 owners: owners
             }))
     }
+
+    <Route exact path="/employees" render={(props) => {
+                        return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    }} />
 */
 
