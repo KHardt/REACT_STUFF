@@ -1,81 +1,52 @@
-import React, { Component } from 'react'
-import { Link } from "react-router-dom"
+import React, { Component } from "react"
+//import dog from "./DogIcon.png"
+import "./Employee.css"
+import AnimalCard from "../animals/AnimalCard"
+const empImage = require("../animals/occupation-19-003-512.png");
+
 
 export default class EmployeeList extends Component {
     render () {
         return (
 
             <React.Fragment>
-            <div className="employeeButton">
-            <button type="button"
+                <div className="employeeButton">
+                <button type="button"
                     className="btn btn-success"
                     onClick={() => {
-                        console.log(this.props)//will show history if works
-                        this.props.history.push("/employees/new")}//history will be set at Route {...props} to bring all
+                        //console.log(this.props)
+                        this.props.history.push("/employees/new")}
                     }>Add Employee</button>
-        </div>
+                </div>
+
             <section className="employees">
             {
-                this.props.employees.map(employees =>
-                    <div key={employees.id} className="card">
+                this.props.employees.map(employee =>
+                    <div key={employee.id} className="card card--employee">
                         <div className="card-body">
                             <h5 className="card-title">
-                                {employees.name}
-                                <Link className="nav-link" to={`/employees/${employees.id}`}>Details</Link>
-                                <a href="#"
-                                    onClick={() => this.props.deleteEmployee(employees.id)}
-                                    className="card-link">Delete</a>
+                                <img src={empImage} className="icon--employee" />
+                                {employee.name}
+                            <a href="#"
+                                onClick={() => this.props.deleteEmployee(employee.id)}
+                                className="card-link">Delete</a>
                             </h5>
+
+                            <h6 className="card-subtitle mb-2 text-muted">Caretaker For:</h6>
+                            <div className="animals--caretaker">
+                            {
+                                this.props.animals
+                                    .filter(anml => anml.employeeId === employee.id)
+                                    .map(anml => <AnimalCard key={anml.id} animal={anml} {...this.props} />)
+                            }
+                            </div>
+
                         </div>
                     </div>
                 )
             }
             </section>
-
             </React.Fragment>
         )
     }
 }
-
-
-
-
-
-
-/*
-import React, { Component } from 'react'
-
-class EmployeeList extends Component {
-    render() {
-        return (
-            <section className="employees">
-            {
-                this.props.employees.map(employees =>
-                    <div key={employees.id}>
-                        {employees.name}
-                    </div>
-                )
-            }
-            </section>
-        )
-    }
-}
-
-export default EmployeeList
-
-
-
-export default class EmployeeList  extends Component {
-    render() {
-        return (
-            <article>
-                <h1>Employee List</h1>
-                <section>Jessica Younker</section>
-                <section>Jordan Nelson</section>
-                <section>Zoe LeBlanc</section>
-                <section>Blaise Roberts</section>
-            </article>
-        );
-    }
-}
-*/
