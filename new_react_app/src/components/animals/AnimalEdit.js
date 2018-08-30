@@ -6,18 +6,27 @@ import React, { Component } from "react"
 export default class AnimalEdit extends Component {
     // Set initial state //emplty like empty string to be blank
     state = {
-        animalName: "",
+        name: "",
         breed: "",
         employeeID: ""
     }
 
-    // Update state whenever an input field is edited
+    //Update state whenever an input field is edited
+    
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
 
+/*
+handleFieldChange = (whichOne, evt) => {
+    const updateAnimal = this.state.animal;
+    const stateToChange = whichOne
+    updateAnimal[stateToChange] = evt.target.value
+    this.setState({updateAnimal})
+ }
+*/
     /*
         Local method for validation, creating animal object, and
         invoking the function reference passed from parent component
@@ -55,7 +64,7 @@ export default class AnimalEdit extends Component {
                         <input type="text" required="true"
                                className="form-control"
                                onChange={this.handleFieldChange}
-                               id="animalName"
+                               id="name"
                                defaultValue = {this.state.name}
                                placeholder="Animal name" />
                     </div>
